@@ -24,7 +24,8 @@ app.use(express.urlencoded({ extended: true }));
 const db = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: '122333',
+    password: '1907',
+    //password: '122333',
     database: 'tienda_pc'
 });
 
@@ -74,6 +75,7 @@ app.post('/register', (req, res) => {
             res.status(200).send('Usuario registrado correctamente');
         });
     });
+
 });
 
 
@@ -160,8 +162,6 @@ app.get('/productos', (req, res) => {
         res.status(200).json(results); // Envía los productos al cliente
     });
 });
-
-
 
 // Iniciar el servidor
 app.listen(port, () => {

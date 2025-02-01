@@ -331,11 +331,12 @@ ul.conat_info li a:hover {
 
 .banner_main {
      background: url(../images/banner.png);
-     padding: 300px 0px 0px 0px;
+     padding: 100px 0px 0px 0px;
      background-size: auto 78%;
      background-repeat: no-repeat;
      min-height: 1150px;
      background-position: right top;
+     position: relative;
 }
 
 .text-bg {
@@ -499,8 +500,8 @@ ul.conat_info li a:hover {
 /** about section **/
 
 .about {
-     background-color: #ffffff;
-     margin-top: -160px;
+
+     margin-top: -500px;
 }
 
 .about .about_img figure {
@@ -1061,6 +1062,55 @@ ul.location_icon li a:hover {
 .copyright a:hover {
      color: #000;
 }
+
+#registroForm {
+     margin-top: 70px; 
+}
+#loginForm {
+     margin-top: 70px;
+}
+#invitadoform {
+     margin-top: 70px; 
+}
+
+.navbar {
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    position: fixed; /* Por defecto, la navbar es fixed */
+    background-color: transparent; /* O el color que desees */
+}
+
+/* Cuando el ancho de la pantalla sea menor o igual a 768px (típico para móviles) */
+@media (max-width: 768px) {
+    .navbar {
+        position: relative; /* Cambia a relative en dispositivos móviles */
+    }
+}
+
+/* Estilos para las tarjetas de productos */
+.product-card {
+     height: 100%; /* Asegura que todas las tarjetas tengan la misma altura */
+     display: flex;
+     flex-direction: column;
+ }
+ 
+ /* Estilos para las imágenes */
+ .product-card img {
+     width: 100%; /* Ancho fijo */
+     height: 200px; /* Altura fija */
+     object-fit: cover; /* Ajusta la imagen sin distorsionarla */
+ }
+ 
+ /* Estilos para el cuerpo de la tarjeta */
+ .product-card .card-body {
+     flex-grow: 1; /* Hace que el cuerpo de la tarjeta ocupe el espacio restante */
+     display: flex;
+     flex-direction: column;
+     justify-content: space-between; /* Distribuye el espacio entre los elementos */
+ }
+
 
 
 /** end footer **/

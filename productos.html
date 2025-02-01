@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Productos</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="shortcut icon" href="images/icono.png">
     <style>
         .product-card img {
             max-height: 200px;
@@ -54,25 +55,75 @@
         <a>Cerrar sesión</a>
     </div>
     <header>
-        <!-- header inner -->
-        <div class="header">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-4 col-sm-4">
-                        <div class="logo">
-                            <a href="index.html"><img src="images/logo.png" alt="#" /></a>
-                        </div>
-                    </div>
-                    <div class="col-md-8 col-sm-8">
-                        <div class="right_bottun">
-                            <button class="openbtn" onclick="openNav()"><img src="images/menu_icon.png" alt="#" />
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-with">
+           <!-- Logo -->
+           <a class="navbar-brand" href="index.html">
+              <img src="images/logo.png" alt="Logo">
+           </a>
+     
+           <!-- Botón para móviles -->
+           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+              aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+           </button>
+     
+           <!-- Menú de navegación -->
+           <div class="navbar-collapse collapse" id="navbarNav">
+              <ul class="navbar-nav ml-auto">
+                 <li class="nav-item active">
+                    <a class="nav-link text-dark" href="index.html">Inicio</a>
+                 </li>
+                 <li class="nav-item">
+                    <a class="nav-link text-dark" href="productos.html">Productos</a>
+                 </li>
+                 <li class="nav-item">
+                    <a class="nav-link text-dark" href="categorias.html">Categorías</a>
+                 </li>
+                 <li class="nav-item">
+                    <a class="nav-link text-dark" href="ofertas.html">Ofertas y cupones</a>
+                 </li>
+              </ul>
+     
+              <!-- Barra de búsqueda -->
+              <form class="form-inline my-2 my-lg-0 ml-3">
+                 <input class="form-control mr-sm-2" type="search" placeholder="Buscar..." aria-label="Buscar">
+                 <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Buscar</button>
+              </form>
+     
+              <!-- Carrito de compras -->
+              <a href="carrito.html" class="nav-link text-dark ml-3">
+                 <i class="fas fa-shopping-cart"></i>
+              </a>
+     
+              <!-- Dropdown de Ayuda -->
+              <div class="dropdown ml-3">
+                 <a class="nav-link text-dark dropdown-toggle" href="#" id="navbarDropdownHelp" role="button"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-question-circle"></i> <!-- Ícono de pregunta -->
+                 </a>
+                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownHelp">
+                    <a class="dropdown-item" href="contacto.html">Contáctanos</a>
+                    <a class="dropdown-item" href="ayuda.html">Ayuda</a>
+                 </div>
+              </div>
+     
+              <!-- Registro y Autenticación -->
+              <div class="dropdown ml-3">
+                 <a class="nav-link text-dark dropdown-toggle" href="#" id="navbarDropdownAuth" role="button"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-user"></i> <!-- Ícono de usuario -->
+                 </a>
+                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownAuth">
+                    <a class="dropdown-item" href="perfil.html">Mi perfil</a>
+                    <a class="dropdown-item" href="cerrar-sesion.html">Cerrar sesión</a>
+                 </div>
+              </div>
+           </div>
+        </nav>
+     
+        <!-- Asegúrate de incluir FontAwesome para los iconos -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+     </header>
 
     <!-- banner -->
     <section class="banner_main">
@@ -100,9 +151,9 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <!-- end footer -->
-    <!-- Javascript files-->
     <script src="js/jquery.min.js"></script>
     <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/jquery-3.0.0.min.js"></script>
     <!-- sidebar -->
     <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
@@ -117,19 +168,19 @@
         }
     </script>
 
-<script>
-    // Función para cargar los productos desde el backend
-    async function cargarProductos() {
-        try {
-            const response = await fetch('http://localhost:3000/productos',);
-            if (response.ok) {
-                const productos = await response.json();
-                const container = document.getElementById('productCardsContainer');
-                container.innerHTML = ''; // Limpiar el contenedor antes de agregar los productos
+    <script>
+        // Función para cargar los productos desde el backend
+        async function cargarProductos() {
+            try {
+                const response = await fetch('http://localhost:3000/productos',);
+                if (response.ok) {
+                    const productos = await response.json();
+                    const container = document.getElementById('productCardsContainer');
+                    container.innerHTML = ''; // Limpiar el contenedor antes de agregar los productos
 
-                productos.forEach(producto => {
-                    // Crear el HTML para cada producto
-                    const cardHTML = `
+                    productos.forEach(producto => {
+                        // Crear el HTML para cada producto
+                        const cardHTML = `
                         <div class="col-md-4 mb-4">
                             <div class="card product-card">
                                 <img src="http://localhost:3000/uploads/${producto.imagen_url}" alt="${producto.nombre}">
@@ -142,19 +193,19 @@
                             </div>
                         </div>
                     `;
-                    container.innerHTML += cardHTML; // Agregar la tarjeta al contenedor
-                });
-            } else {
-                console.error('Error al cargar los productos');
+                        container.innerHTML += cardHTML; // Agregar la tarjeta al contenedor
+                    });
+                } else {
+                    console.error('Error al cargar los productos');
+                }
+            } catch (err) {
+                console.error('Error al intentar cargar los productos:', err);
             }
-        } catch (err) {
-            console.error('Error al intentar cargar los productos:', err);
         }
-    }
 
-    // Llamar la función para cargar los productos cuando se cargue la página
-    window.onload = cargarProductos;
-</script>
+        // Llamar la función para cargar los productos cuando se cargue la página
+        window.onload = cargarProductos;
+    </script>
 </body>
 
 </html>
