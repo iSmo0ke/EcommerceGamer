@@ -1078,7 +1078,7 @@ ul.location_icon li a:hover {
     left: 0;
     width: 100%;
     z-index: 1000;
-    position: fixed; /* Por defecto, la navbar es fixed */
+    position:absolute; /* Por defecto, la navbar es fixed */
     background-color: transparent; /* O el color que desees */
 }
 
@@ -1094,15 +1094,16 @@ ul.location_icon li a:hover {
      height: 100%; /* Asegura que todas las tarjetas tengan la misma altura */
      display: flex;
      flex-direction: column;
+     transition: transform 0.2s ease-in-out;
  }
- 
+
  /* Estilos para las imágenes */
  .product-card img {
      width: 100%; /* Ancho fijo */
      height: 200px; /* Altura fija */
      object-fit: cover; /* Ajusta la imagen sin distorsionarla */
  }
- 
+
  /* Estilos para el cuerpo de la tarjeta */
  .product-card .card-body {
      flex-grow: 1; /* Hace que el cuerpo de la tarjeta ocupe el espacio restante */
@@ -1111,7 +1112,28 @@ ul.location_icon li a:hover {
      justify-content: space-between; /* Distribuye el espacio entre los elementos */
  }
 
+ /* Contenedor de botones */
+ .button-container {
+     display: none;
+     gap: 10px;
+ }
 
+ /* Mostrar los botones al pasar el ratón sobre la tarjeta */
+ .product-card:hover .button-container {
+     display: flex; /* Mostrar los botones en un contenedor flexible */
+ }
+
+ /* Efecto de hover en la tarjeta */
+ .product-card:hover {
+     transform: translateY(-5px);
+     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+ }
+
+
+ .nav-item.dropdown:hover .dropdown-menu {
+     display: block;
+ }
+ 
 
 /** end footer **/
 
