@@ -24,8 +24,8 @@ app.use(express.urlencoded({ extended: true }));
 const db = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: '1907',
-    //password: '122333',
+    //password: '1907',
+    password: '122333',
     database: 'tienda_pc'
 });
 
@@ -45,6 +45,11 @@ const storage = multer.diskStorage({
     }
 });
 const upload = multer({ storage });
+
+app.use(express.static('public'));
+// Importar rutas
+const routes = require('./services/index');
+app.use('/', routes);
 
 //Ruta para registro
 app.post('/register', (req, res) => {
@@ -154,6 +159,20 @@ app.use('/uploads', express.static('uploads'));
 // Endpoint para obtener los productos
 app.get('/productos', (req, res) => {
     const query = 'SELECT * FROM productos';
+    db.query(query, (err, results) => {
+        if (err) {
+            console.error('Error al obtener los productos:', err);
+            return res.status(500).send('Error al obtener los productos');
+        }
+        res.status(200).json(results); // Envía los productos al cliente
+    });
+});
+
+
+//jalar ofertas
+// Endpoint para obtener los ofertas
+app.get('/tomarofertas', (req, res) => {
+    const query = 'SELECT * FROM ofertas';
     db.query(query, (err, results) => {
         if (err) {
             console.error('Error al obtener los productos:', err);
