@@ -338,6 +338,22 @@ ul.conat_info li a:hover {
      background-position: right top;
      position: relative;
 }
+.banner_admin {
+     background: url(../images/banner.png);
+     padding: 50px;
+     background-size: auto 78%;
+     background-repeat: no-repeat;
+     min-height: 1300px;
+     background-position: right top;
+     position: relative;
+}
+
+.banner_admin-content {
+     max-width: 1500px; /* O el ancho máximo que desees (ej: 1200px, 1400px, etc.) */
+     width: 90%; /* Ocupa el 90% del espacio disponible (ajustable) */
+     margin: 0 auto; /* Centrado horizontal */
+     position: relative; /* Para posicionar elementos hijos si es necesario */
+}
 
 .text-bg {
      margin-top: 70px;
